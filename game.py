@@ -47,7 +47,22 @@ class Kamehameha(Sprite):
 				self.rect.y = (personaje.rect.y + 14)
 		if self.rect.x < 870:
 			self.rect.x += 20
-			
+class Minicell(Sprite):
+	def __init__(self):
+		self.image = minicell = pygame.image.load("Imagenes/minicell.png").convert_alpha()
+		self.rect = self.image.get_rect()
+		self.rect.move_ip(750, 300)
+		self.bandera=0
+	def update(self):
+		if self.rect.y == 0:
+			self.bandera = 0
+		elif self.rect.y == 540:
+			self.bandera = 1
+
+		if self.bandera == 0:
+			self.rect.y += 10
+		elif self.bandera == 1:
+			self.rect.y -= 10
 
 if __name__ == '__main__':
 	# Variables.
@@ -57,26 +72,29 @@ if __name__ == '__main__':
 	screen = pygame.display.set_mode((800,600))
 
 	# Establezco el título.
-	pygame.display.set_caption("Mejor kamehameha")
+	pygame.display.set_caption("Escenario")
 
 	# Creo do objeto surface.
-	fondo = pygame.image.load("Imagenes/fondo.jpg").convert()
+	fondo = pygame.image.load("Imagenes/namek.jpg").convert()
 	# .convert() convierten la superficie a un formato de color que permite imprimirlas mucho mas rápido.
 
 	# Objetos
 	temporizador = pygame.time.Clock()
 	personaje = Personaje()
 	kamehameha = Kamehameha()
+	minicell = Minicell()
 
 	# Movimiento del personaje.
 	while not salir:
 		personaje.update()
 		kamehameha.update()
+		minicell.update()
 
 		# actualizacion grafica
 		screen.blit(fondo, (0, 0))
 		screen.blit(personaje.image, personaje.rect)
 		screen.blit(kamehameha.image, kamehameha.rect)
+		screen.blit(minicell.image, minicell.rect)
 		pygame.display.flip()
 
 		temporizador.tick(60)
