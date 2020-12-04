@@ -12,7 +12,7 @@ readonly PYTHON3='/usr/bin/env python3' # path depends on installation method
 
 # Check that code style follows pep8
 find $DIR -name "*.py" -exec $PYTHON3 -m pycodestyle --verbose --show-source \
-  --show-pep8 --max-line-length=79 --max-doc-length=72 {} \;
+  --show-pep8 --max-line-length=79 --max-doc-length=72 {} +
 
 # Run unit tests with test discovery
 cd $DIR # The script could have been executed from another directory
