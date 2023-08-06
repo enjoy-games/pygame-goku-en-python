@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import pygame
-from pygame.locals import *
-from pygame.sprite import Sprite
 
-class Personaje(Sprite):
+class Personaje(pygame.sprite.Sprite):
 	def __init__(self):
 		self.image = personaje = pygame.image.load("Imagenes/goku.png").convert_alpha()
 		self.rect = self.image.get_rect()
@@ -12,30 +10,30 @@ class Personaje(Sprite):
 		self.muerto = 0
 	def update(self):
 		teclas = pygame.key.get_pressed()
-		if teclas[K_SPACE]:
+		if teclas[pygame.K_SPACE]:
 			self.image = personaje = pygame.image.load("Imagenes/gokukamehameha.png").convert_alpha()
 		elif kamehameha.rect.x > 860:
 			self.image = personaje = pygame.image.load("Imagenes/goku.png").convert_alpha()
 
-		if teclas[K_LEFT]:
+		if teclas[pygame.K_LEFT]:
 			self.image = personaje = pygame.image.load("Imagenes/gokuleft.png").convert_alpha()
 			if self.rect.x > 0:
 				self.rect.x -= 10
-		elif teclas[K_RIGHT]:
+		elif teclas[pygame.K_RIGHT]:
 			self.image = personaje = pygame.image.load("Imagenes/gokuright.png").convert_alpha()
 			if self.rect.x < 740:
 				self.rect.x += 10
 
-		if teclas[K_UP]:
+		if teclas[pygame.K_UP]:
 			self.image = personaje = pygame.image.load("Imagenes/gokuup.png").convert_alpha()
 			if self.rect.y > 32:
 				self.rect.y -= 10
-		elif teclas[K_DOWN]:
+		elif teclas[pygame.K_DOWN]:
 			if self.rect.y < 530:
 				self.image = personaje = pygame.image.load("Imagenes/gokudown.png").convert_alpha()
 				self.rect.y += 10
 
-class Kamehameha(Sprite):
+class Kamehameha(pygame.sprite.Sprite):
 	def __init__(self):
 		self.image = kamehameha = pygame.image.load("Imagenes/kamehameha.gif").convert_alpha()
 		self.rect = self.image.get_rect()
@@ -43,13 +41,13 @@ class Kamehameha(Sprite):
 	def update(self):
 		teclas = pygame.key.get_pressed()
 		if self.rect.x > 840:
-			if teclas[K_SPACE]:
+			if teclas[pygame.K_SPACE]:
 				self.rect.x = (personaje.rect.x + 60)
 				self.rect.y = (personaje.rect.y + 14)
 		if self.rect.x < 870:
 			self.rect.x += 20
 
-class Barravidagoku(Sprite):
+class Barravidagoku(pygame.sprite.Sprite):
 	def __init__(self):
 		self.image = barravidagoku = pygame.image.load("Imagenes/barravidagoku.png").convert_alpha()
 		self.rect = self.image.get_rect()
@@ -70,7 +68,7 @@ class Barravidagoku(Sprite):
 						barravidagoku.rect.x -= 26
 						disparo.rect.x = -400
 
-class Minicell(Sprite):
+class Minicell(pygame.sprite.Sprite):
 	def __init__(self):
 		self.image = minicell = pygame.image.load("Imagenes/minicell.png").convert_alpha()
 		self.rect = self.image.get_rect()
@@ -95,7 +93,7 @@ class Minicell(Sprite):
 		self.rect.x -= 10
 		self.rect.y += 10
 
-class Disparo(Sprite):
+class Disparo(pygame.sprite.Sprite):
 	def __init__(self):
 		self.image = barravidagoku = pygame.image.load("Imagenes/disparominicell.png").convert_alpha()
 		self.rect = self.image.get_rect()
@@ -108,7 +106,7 @@ class Disparo(Sprite):
 		if self.rect.x > -400:
 			self.rect.x -= 5
 
-class Barravidaminicell(Sprite):
+class Barravidaminicell(pygame.sprite.Sprite):
 	def __init__(self):
 		self.image = barravidaminicell = pygame.image.load("Imagenes/barravidaminicell.png").convert_alpha()
 		self.rect = self.image.get_rect()
