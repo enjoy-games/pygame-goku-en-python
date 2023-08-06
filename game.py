@@ -165,7 +165,8 @@ if __name__ == '__main__':
         "Imagenes/cuadrovidaminicell.png").convert_alpha()
     hasperdido = pygame.image.load("Imagenes/Hasperdido.png").convert()
     hasganado = pygame.image.load("Imagenes/Hasganado.png").convert()
-    # .convert() convierten la superficie a un formato de color que permite imprimirlas mucho mas rápido.
+    # .convert() convierten la superficie a un formato de color
+    # que permite imprimirlas mucho mas rápido.
 
     # Objetos
     temporizador = pygame.time.Clock()
